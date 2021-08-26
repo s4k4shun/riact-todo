@@ -6,8 +6,10 @@ const App = () =>{
     const [text,setText] =useState("")
     const newText = (event) => {
         setText(event.target.value)
-        console.log(text)
+        console.log(todos)
     }
+    const handDelete = index => {const newTodos =[...todos].filter((todo,todoIndex) => todoIndex !==index)
+    setTodo(newTodos)}
     return (
         <React.Fragment>
             <h1>TODOリスト</h1>
@@ -15,7 +17,7 @@ const App = () =>{
             <button　onClick={() => setTodo([...todos,text])}>追加</button>
             <ul>
                 {todos.map((todo,index)=>(
-                    <li key={index}>{todo.text}</li>
+                    <li key={index}>{todo}<button onClick={ () => handDelete( index )}>削除</button></li>
                 ))}
             </ul>
         </React.Fragment>
